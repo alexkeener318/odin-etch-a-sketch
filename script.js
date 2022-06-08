@@ -9,8 +9,18 @@ for(let i = 0; i < 16; i++){
     }
 }
 
+// sets up starting webpage
+let width = 800 / 16;
+let grid = document.querySelectorAll(".grid");
+const resize = document.querySelector(".size");
+const reset = document.querySelector(".clear");
+changeWidth(width);
+grid.forEach(square => {
+    square.addEventListener('mouseenter', changeColor);
+});
+
+
 function changeColor(e) {
-    console.log(e.target);
     const div = e.target;
     div.style.backgroundColor = "black";
 }
@@ -21,17 +31,16 @@ function changeWidth(newWidth){
     })
 }
 
-let width = 800 / 16;
-console.log("WIDTH: " +width);
-let grid = document.querySelectorAll(".grid");
-changeWidth(width);
-grid.forEach(square => {
-    square.addEventListener('mouseenter', changeColor);
-});
+function clear(e) {
+    grid.forEach(square => {
+        square.style.backgroundColor = "white";
+    })
+}
 
-const button = document.querySelector("button");
+// Resets canvas
+reset.addEventListener("click", clear);
 
-button.addEventListener("click",()=>{
+resize.addEventListener("click",()=>{
    let newDimension = prompt("Enter new dimensions: ");
    if(newDimension > 100){
        alert("Please enter a value of 100 or less");

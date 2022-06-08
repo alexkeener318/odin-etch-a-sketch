@@ -1,8 +1,12 @@
+
 .container {
     width: 800px;
     height: 800px;
+    margin: auto;
     display: flex;
     flex-wrap: wrap;
     border: 5px solid black;
-    
+}
+button {
+    margin-left: 338px;
 }
